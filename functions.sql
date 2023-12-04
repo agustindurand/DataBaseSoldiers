@@ -24,10 +24,10 @@ end%
 
 DELIMITER%
 
-CREATE FUNCTION promotion_condition (date_graduation DATE, age INT) RETURNS VARCHAR(50)
+CREATE FUNCTION promotion_condition (date_graduation DATE, age INT) RETURNS VARCHAR(100)
 DETERMINISTIC
 BEGIN
-    DECLARE time_promotion VARCHAR(50);
+    DECLARE time_promotion VARCHAR(100);
     IF (DATEDIFF("2023-01-01", date_graduation) > 1825 AND age > 25) THEN
         SET time_promotion = "in a position to ascend";
     ELSE
