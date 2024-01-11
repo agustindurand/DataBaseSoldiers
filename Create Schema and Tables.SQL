@@ -64,3 +64,59 @@ CREATE TABLE IF NOT EXISTS Service_Effective (
     FOREIGN KEY (Id_Service) REFERENCES Service(Id_Service),
     FOREIGN KEY (Id_Soldier) REFERENCES Soldiers_Quantity(Id_Soldier)
 );
+
+CREATE TABLE Missions (
+   IdMission INT AUTO_INCREMENT PRIMARY KEY,
+   Id_Soldier INT, 
+   FOREIGN KEY (Id_Soldier) REFERENCES soldiers_quantity(id_soldier),
+   Location Varchar (50),
+   Mission_date DATE,
+   Status ENUM ("Current", "NoCurrent") NOT NULL
+);
+
+
+CREATE TABLE STATE (
+    ID_STATE INT PRIMARY KEY AUTO_INCREMENT,
+    Id_Soldier INT,
+	FOREIGN KEY (Id_Soldier) REFERENCES soldiers_quantity(id_soldier),
+    STATUS VARCHAR(50)
+);
+
+CREATE TABLE SANCTIONS (
+    ID_SANCTIONS INT PRIMARY KEY AUTO_INCREMENT,
+	Id_Soldier INT,
+    FOREIGN KEY (Id_Soldier) REFERENCES soldiers_quantity(id_soldier),
+    DEDUCTIONS DECIMAL(10,2), -- Hace referencia a que el numero decimal solamente tendra dos digitos luego de la coma -->
+    DAYS_SUSPENDED INT
+);
+
+CREATE TABLE CONTACT (
+    ID_CONTACT INT PRIMARY KEY AUTO_INCREMENT,
+	Id_Soldier INT,
+	FOREIGN KEY (Id_Soldier) REFERENCES soldiers_quantity(id_soldier),
+    FAMILY_NAME VARCHAR(100),
+    CONTACT_NUMBER VARCHAR(15),
+    RELATIONSHIP VARCHAR(50)
+);
+
+CREATE TABLE BENEVOLENCES (
+   ID_BENEVOLENCE INT PRIMARY KEY auto_increment,
+	Id_Soldier INT,
+   FOREIGN KEY (Id_Soldier) REFERENCES soldiers_quantity(id_soldier),
+   Id_company INT,
+   FOREIGN KEY (Id_company) REFERENCES company(id_company),
+    SUPERIOR_GRANTING VARCHAR(100)
+);
+
+CREATE TABLE QUANTITY_OF_REPORTS (
+   ID_REPORT INT PRIMARY KEY AUTO_INCREMENT, 
+   Id_Soldier INT,
+   FOREIGN KEY (Id_Soldier) REFERENCES soldiers_quantity(id_soldier),
+   Id_company INT,
+   FOREIGN KEY (Id_company) REFERENCES company(id_company),
+   Id_quarters INT,
+   FOREIGN KEY (Id_Quarters) REFERENCES quarters(id_quarters),
+    REPORT_STATUS VARCHAR(50),
+    SCORE INT
+    
+);
