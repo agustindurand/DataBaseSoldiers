@@ -26,3 +26,7 @@ SELECT sq.Last_Name, sq.First_Name, s.Description AS Descripcion_Servicio, se.Da
 FROM Soldiers_Quantity sq
 INNER JOIN Service_Effective se ON sq.Id_Soldier = se.Id_Soldier
 INNER JOIN Service s ON se.Id_Service = s.Id_Service;
+
+CREATE VIEW NUMBEROFCONGRATULATIONSGRANTEDBYSUPERIOR AS 
+SELECT SUPERIOR_GRANTING, COUNT(*) AS COUNT  FROM BENEVOLENCES
+GROUP BY SUPERIOR_GRANTING;
