@@ -30,3 +30,16 @@ INNER JOIN Service s ON se.Id_Service = s.Id_Service;
 CREATE VIEW NUMBEROFCONGRATULATIONSGRANTEDBYSUPERIOR AS 
 SELECT SUPERIOR_GRANTING, COUNT(*) AS COUNT  FROM BENEVOLENCES
 GROUP BY SUPERIOR_GRANTING;
+
+
+CREATE VIEW vista reportes soldado AS
+SELECT
+    s.id_soldier,
+    COUNT(qr.id_report) AS cantidad_reportes,
+    AVG(qr.score) AS promedio_score
+FROM
+    soldiers s
+LEFT JOIN
+    quantity_of_reports qr ON s.id_soldier = qr.id_soldier
+GROUP BY
+    s.id_soldier;

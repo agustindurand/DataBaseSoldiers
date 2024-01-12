@@ -17,19 +17,12 @@ END //
 
 DELIMITER ;
 
-
-
-
-
-
 delimiter //
 create procedure sp_base () 
 begin 
    select type_corps from army_corps;
    delimiter // 
    
-
-
 delimiter // 
 create procedure activity_of_company (in activity char (100))
 begin
@@ -44,8 +37,6 @@ begin
    DEALLOCATE PREPARE RUNSQL;
 
 end 
-
-
 
 delimiter //
 CREATE PROCEDURE add_soldier (IN id_soldier int, in last_name CHAR (200))

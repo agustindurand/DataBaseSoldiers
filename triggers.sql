@@ -1,14 +1,10 @@
-
-create table expenses_log (
-id int primary key auto_increment,
-fecha date,
-expenseId int
-);
+DELIMITER //
 
 Create trigger control after update on army_corps_expenses
 for each row
 insert into expenses_log (fecha, expenseId) values (now(),new.id);   
 
+DELIMITER;
 
 
 
