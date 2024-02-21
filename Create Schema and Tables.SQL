@@ -120,3 +120,10 @@ CREATE TABLE QUANTITY_OF_REPORTS (
     SCORE INT
     
 );
+
+CREATE TABLE soldiers_quantity_audit (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha TIMESTAMP,
+    accion VARCHAR(10),
+    usuario VARCHAR(100)
+);
